@@ -81,10 +81,10 @@ open TopologicalSpace
 #check SeparableSpace
 
 -- P000027 : Second Countable
-#check SecondCountableSpace
+#check SecondCountableTopology
 
 -- P000028 : First Countable
-#check FirstCountableSpace
+#check FirstCountableTopology
 
 -- P000029 : Countable chain condition
 #check CountableChainConditionSpace
@@ -156,7 +156,7 @@ open TopologicalSpace
 #check ScatteredSpace
 
 -- P000052 : Discrete
-#check DiscreteSpace
+#check DiscreteTopology
 
 -- P000053 : Metrizable
 #check MetrizableSpace
@@ -171,7 +171,7 @@ open TopologicalSpace
 #check MeagerSpace
 
 -- P000057 : Countable
-#check CountableSpace
+#check Countable
 
 -- P000058 : Cardinality $\lt\mathfrak c$
 #check CardinalityLtcSpace
@@ -234,7 +234,7 @@ open TopologicalSpace
 #check CorsonCompactSpace
 
 -- P000078 : Finite
-#check FiniteSpace
+#check Finite
 
 -- P000079 : Sequential
 #check SequentialSpace
@@ -258,7 +258,7 @@ open TopologicalSpace
 #check HomogeneousSpace
 
 -- P000087 : Has a group topology
-#check HasAGroupTopologySpace
+#check TopologicalGroup
 
 -- P000088 : Collectionwise normal
 #check CollectionwiseNormalSpace
@@ -267,7 +267,7 @@ open TopologicalSpace
 #check FixedPointPropertySpace
 
 -- P000090 : Alexandrov
-#check AlexandrovSpace
+#check AlexandrovDiscrete
 
 -- P000091 : Eberlein compact
 #check EberleinCompactSpace
@@ -276,7 +276,7 @@ open TopologicalSpace
 #check MovingOffPropertySpace
 
 -- P000093 : Locally countable
-#check LocallyCountableSpace
+#check LocallyCountable
 
 -- P000095 : I-tactic Banach-Mazur
 #check ITacticBanachMazurSpace
@@ -339,7 +339,7 @@ open TopologicalSpace
 #check ZCompactSpace
 
 -- P000121 : Pseudometrizable
-#check PseudometrizableSpace
+#check PseudoMetrizableSpace
 
 -- P000122 : S space
 #check SSpace
@@ -387,7 +387,7 @@ open TopologicalSpace
 #check AnticompactSpace
 
 -- P000137 : Empty
-#check EmptySpace
+#check IsEmpty
 
 -- P000138 : Countably-many continuous self-maps
 #check CountablyManyContinuousSelfMapsSpace
@@ -408,7 +408,7 @@ open TopologicalSpace
 #check WeakHausdorffSpace
 
 -- P000144 : Locally pseudometrizable
-#check LocallyPseudometrizableSpace
+#check LocallyPseudoMetrizableSpace
 
 -- P000145 : Strongly paracompact
 #check StronglyParacompactSpace
@@ -468,10 +468,10 @@ open TopologicalSpace
 #check PseudonormalSpace
 
 -- P000166 : Has a coarser separable metrizable topology
-#check HasACoarserSeparableMetrizableTopologySpace
+#check HasACoarserSeparableMetrizableTopology
 
 -- P000167 : Sequentially discrete
-#check SequentiallyDiscreteSpace
+#check SequentiallyDiscreteTopology
 
 -- P000168 : $\omega$C
 #check OmegacSpace
@@ -511,4 +511,3 @@ open TopologicalSpace
 
 -- P000180 : Hereditarily separable
 #check HereditarilySeparableSpace
-

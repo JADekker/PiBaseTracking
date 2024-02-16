@@ -10,6 +10,11 @@ end
 
 input_folder = "PiBaseProject/properties"
 output_file = "PiBaseProject/intermediate_outputs/properties_cleaned.lean"
+try 
+    rm("PiBaseProject/intermediate_outputs", recursive = true)
+catch 
+end
+mkdir("PiBaseProject/intermediate_outputs") 
 
 function extract_uid_name(file_content)
     try
@@ -46,8 +51,21 @@ function extract_uid_name(file_content)
         cleaned_name = replace(cleaned_name, "-" => " ")
         cleaned_name = join(map(titlecase, split(cleaned_name, ' ')))   
         cleaned_name = replace(cleaned_name, "space" => "Space")
-        cleaned_name = endswith(cleaned_name, "Space")  ? cleaned_name : cleaned_name * "Space"
+        cleaned_name = endswith(cleaned_name, "Space") || endswith(cleaned_name, "Topology") ? cleaned_name : cleaned_name * "Space"
         
+        # Hard-coded exceptions
+        cleaned_name = replace(cleaned_name, "FirstCountableSpace" => "FirstCountableTopology")
+        cleaned_name = replace(cleaned_name, "SecondCountableSpace" => "SecondCountableTopology")
+        cleaned_name = replace(cleaned_name, "DiscreteSpace" => "DiscreteTopology")
+        cleaned_name = replace(cleaned_name, "AlexandrovSpace" => "AlexandrovDiscrete")
+        cleaned_name = replace(cleaned_name, "FiniteSpace" => "Finite")
+        cleaned_name = replace(cleaned_name, "CountableSpace" => "Countable")
+        cleaned_name = replace(cleaned_name, "EmptySpace" => "IsEmpty")
+        cleaned_name = replace(cleaned_name, "PseudometrizableSpace" => "PseudoMetrizableSpace")
+        cleaned_name = replace(cleaned_name, "HasAGroupTopology" => "TopologicalGroup")
+        if cleaned_name == "DiscreteSpace"
+            error()
+        end
         cleaned_name = remove_accents(cleaned_name)
         return uid, name, cleaned_name
     catch
@@ -73,8 +91,14 @@ end
 # Call the function to process files
 process_files(input_folder, output_file)
 
+try 
+    rm("PiBaseProject/lean_checklist_properties", recursive = true)
+catch 
+end
+mkdir("PiBaseProject/lean_checklist_properties") 
+
 open("PiBaseProject/intermediate_outputs/properties_cleaned.lean", "r") do input_file
-    open("PiBaseProject/intermediate_outputs/properties_in_lean.lean", "w") do output_file
+    open("PiBaseProject/lean_checklist_properties/properties_in_lean.lean", "w") do output_file
         println(output_file, "import Mathlib\n\nopen TopologicalSpace\n")
         for line in eachline(input_file)
             uid, name, cleaned_name  = map(strip, split(line, ':'))
